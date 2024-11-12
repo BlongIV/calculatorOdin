@@ -1,0 +1,38 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.row1, .row2, .row3, .row4 {
+    display: flex;
+}
+
+.number {
+    background-color: orange;
+    font-size: large;
+    border-radius: 50px;
+    padding: 20px;
+    width: 18px;
+    text-align: center;
+    margin: 5px;
+}
+
+.operator, .clear {
+    background-color: gray;
+    font-size: large;
+    border-radius: 50px;
+    padding: 20px;
+    width: 18px;
+    text-align: center;
+    margin: 5px;
+}
+
+.screen {
+    background-color: grey;
+    width: 250px;
+    height: 50px;
+    margin-left: 10px;
+    font-size: 50px;
+    text-align: right;
+}
