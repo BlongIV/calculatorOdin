@@ -2,19 +2,29 @@ let screenContent = "";
 
 
 function add(x, y) {
-    return x + y;
+    let newnum = x + y;
+    return Math.round(newnum * 100) / 100;
 }
 
 function subtract(x, y) {
-    return x - y;
+    let newnum = x - y;
+    return Math.round(newnum * 100) / 100;
 }
 
 function multiply(x,y) {
-    return x * y;
+    let newnum = x * y;
+    return Math.round(newnum * 100) / 100;
 }
 
 function divide(x, y) {
-    return x / y;
+    if (y === 0) {
+        return "ERROR";
+    }
+    else {
+        let newnum = x / y;
+        return Math.round(newnum * 100) / 100;
+    }
+    
 }
 
 function operate(expression) {
@@ -22,13 +32,19 @@ function operate(expression) {
     let num1 = Number(expressionArr[0]);
     let operator = expressionArr[1];
     let num2 = Number(expressionArr[2]);
+    if (operator === undefined) {
+        return num1;
+    }
+    if (expressionArr[2] === "") {
+        return "ERROR";
+    }
     if (operator === "+") {
-        return add(num1, num2)
+        return add(num1, num2);
     }
     if (operator === "-") {
         return subtract(num1, num2);
     }
-    if (operator === "*") {
+    if (operator === "x") {
         return multiply(num1, num2);
     }
     if (operator === "/") {
@@ -110,23 +126,54 @@ zero.addEventListener("click", () => {
 });
 
 plus.addEventListener("click", () => {
-    screenContent = screenContent + " + ";
-    display.textContent = screenContent;
+    if (screenContent.includes(" + ") || screenContent.includes(" - ") || screenContent.includes(" x ") || screenContent.includes(" / ")) {
+        let answer = operate(screenContent);
+        screenContent = answer + " + ";
+        display.textContent = screenContent;
+    }
+    else {
+        screenContent = screenContent + " + ";
+        display.textContent = screenContent;
+    }
+    
 });
 
 minus.addEventListener("click", () => {
-    screenContent = screenContent + " - ";
-    display.textContent = screenContent;
+    if (screenContent.includes(" + ") || screenContent.includes(" - ") || screenContent.includes(" x ") || screenContent.includes(" / ")) {
+        let answer = operate(screenContent);
+        screenContent = answer + " - ";
+        display.textContent = screenContent;
+    }
+    else {
+        screenContent = screenContent + " - ";
+        display.textContent = screenContent;
+    } 
 });
 
 times.addEventListener("click", () => {
-    screenContent = screenContent + " x ";
-    display.textContent = screenContent;
+    if (screenContent.includes(" + ") || screenContent.includes(" - ") || screenContent.includes(" x ") || screenContent.includes(" / ")) {
+        let answer = operate(screenContent);
+        screenContent = answer + " x ";
+        display.textContent = screenContent;
+    }
+    else {
+        screenContent = screenContent + " x ";
+        display.textContent = screenContent;
+    }
+    
 });
 
 divisor.addEventListener("click", () => {
-    screenContent = screenContent + " / ";
-    display.textContent = screenContent;
+    if (screenContent.includes(" + ") || screenContent.includes(" - ") || screenContent.includes(" x ") || screenContent.includes(" / ")) {
+        let answer = operate(screenContent);
+        screenContent = answer + " / ";
+        display.textContent = screenContent;
+    }
+    else {
+        screenContent = screenContent + " / ";
+        display.textContent = screenContent;
+    }
+    
 });
 
 equal.addEventListener("click", () => {
